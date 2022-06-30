@@ -1,10 +1,11 @@
-## Micronaut 3.5.2 Documentation
+## Micronaut gRPC service
+###### Exposing gRPC over HTTP 1.1
 
-- [User Guide](https://docs.micronaut.io/3.5.2/guide/index.html)
-- [API Reference](https://docs.micronaut.io/3.5.2/api/index.html)
-- [Configuration Reference](https://docs.micronaut.io/3.5.2/guide/configurationreference.html)
-- [Micronaut Guides](https://guides.micronaut.io/index.html)
----
+The main proposal of this repo is study gRPC services implemented with Micronaut and exposed over HTTP 1.1 through Envoy gRPC_Transcoder filter.
 
-- [Protobuf Gradle Plugin](https://plugins.gradle.org/plugin/com.google.protobuf)
-- [Shadow Gradle Plugin](https://plugins.gradle.org/plugin/com.github.johnrengelman.shadow)
+## Running
+./gradlew run
+docker-compose up -d --force-recreate
+
+## Reading Envoy Logs
+docker logs -f envoy-transcoder
