@@ -7,8 +7,15 @@ option objc_class_prefix = "HLW";
 
 package com.am.app;
 
+import "google/api/annotations.proto";
+
 service UserService {
-  rpc createUser (CreateUserRequest) returns (CreateUserResponse) {}
+  rpc createUser (CreateUserRequest) returns (CreateUserResponse) {
+    option (google.api.http) = {
+      post: "/api/v1/user"
+      body: "*"
+    };
+  }
 }
 
 message CreateUserRequest {
