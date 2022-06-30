@@ -29,6 +29,8 @@ dependencies {
 
     testImplementation("io.micronaut:micronaut-http-client")
 
+    protobuf files("${projectDir}/proto-dependencies")
+    implementation ("com.google.api.grpc:proto-google-common-protos:2.9.1")
 }
 
 
@@ -72,6 +74,17 @@ protobuf {
         all()*.plugins {
             grpc {}
             grpckt {}
+        }
+
+        all().each { task ->
+            task.generateDescriptorSet = true
+            task.descriptorSetOptions.includeSourceInfo = true
+            task.descriptorSetOptions.includeImports = true
+            task.descriptorSetOptions.path =
+                    "${projectDir}/transcoder/${task.name}.dsc"
+            task.doFirst {
+                delete task.outputs
+            }
         }
     }
 }
