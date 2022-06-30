@@ -1,17 +1,17 @@
 package com.am.app.grpc
 
-import com.am.app.DemoReply
-import com.am.app.DemoRequest
-import com.am.app.DemoServiceGrpcKt.DemoServiceCoroutineImplBase
+import com.am.app.CreateUserRequest
+import com.am.app.CreateUserResponse
+import com.am.app.UserServiceGrpcKt
 import jakarta.inject.Singleton
 
 @Singleton
-class DemoGRPCServer : DemoServiceCoroutineImplBase() {
+class DemoGRPCServer : UserServiceGrpcKt.UserServiceCoroutineImplBase() {
 
-    override suspend fun createDemo(request: DemoRequest): DemoReply {
-        return DemoReply
+    override suspend fun createUser(request: CreateUserRequest): CreateUserResponse {
+        return CreateUserResponse
             .newBuilder()
-            .setMessage("User Created ${request.name}")
+            .setMessage("User Created: ${request.name}")
             .build()
     }
 }

@@ -7,14 +7,14 @@ option objc_class_prefix = "HLW";
 
 package com.am.app;
 
-service DemoService {
-  rpc createDemo (DemoRequest) returns (DemoReply) {}
+service UserService {
+  rpc createUser (CreateUserRequest) returns (CreateUserResponse) {}
 }
 
-message DemoRequest {
+message CreateUserRequest {
   string name = 1;
 }
 
-message DemoReply {
+message CreateUserResponse {
   string message = 1;
 }
