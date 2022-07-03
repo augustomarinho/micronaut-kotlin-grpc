@@ -29,8 +29,7 @@ dependencies {
 
     testImplementation("io.micronaut:micronaut-http-client")
 
-    protobuf files("${projectDir}/build/extracted-include-protos/main/google/rpc/")
-    implementation ("com.google.api.grpc:proto-google-common-protos:2.9.1")
+    protobuf ("com.google.api.grpc:proto-google-common-protos:2.9.1")
 }
 
 
@@ -51,6 +50,12 @@ tasks {
         kotlinOptions {
             jvmTarget = "11"
         }
+    }
+}
+
+tasks.configureEach {
+    if (name.matches("extractIncludeTestProto")) {
+        enabled = false
     }
 }
 
